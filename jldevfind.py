@@ -49,6 +49,10 @@ def find_jl_devices(venfilter=None):
                 devpaths.append(words[0])
         '''
 
+    elif sys.platform == 'darwin':
+        from scsiio.macosport import list_devices
+        devpaths.extend(list_devices())
+
     else:
         raise NotImplemented('Platform %s is not supported (yet)' % sys.platform)
 

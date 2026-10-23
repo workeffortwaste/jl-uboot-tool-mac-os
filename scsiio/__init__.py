@@ -6,5 +6,8 @@ if sys.platform == 'win32':
 elif sys.platform == 'linux':
     from scsiio.linuxport import SCSIDev
 
+elif sys.platform == 'darwin':
+    from scsiio.macosport import SCSIDev
+
 else:
     raise ImportError("Platform '%s' is not supported (yet)" % sys.platform)

@@ -39,6 +39,27 @@ i.e. the ones that start with "UBOOT", "UDISK" or "DEVICE"
 It is also used to find and choose devices when no '--device' argument was given.
 (until a proper solution is found)
 
+## macOS USB access
+
+On macOS, UBOOT SCSI commands use PyUSB over USB Mass Storage Bulk-Only Transport
+(BOT), backed by libusb. Install the system library and Python requirements:
+
+```sh
+brew install libusb
+python3 -m pip install -r requirements.txt
+```
+
+Run the tool with USB device permissions, typically through `sudo`:
+
+```sh
+sudo /path/to/python jluboottool.py
+```
+
+The device finder scans JieLi (`4c4a`) USB devices with a Mass Storage BOT
+interface. If several matching devices are connected, select one with a path
+such as `usb:4c4a:8057:BUS:ADDRESS`. If libusb is not discovered automatically,
+set `LIBUSB_LIBRARY` to its shared-library path.
+
 ## Determining the size of a flash chip
 
 Since currently I haven't bothered to rip some SPI flash database (or make my own, at least with some basic entries representing most of the SPI flash chips used in chips -- or just a very basic size calculation relying on the flash chip ID, like I did in my very first JL dumper tool), if you want to dump the whole flash you have to examine the correct size by yourself.
