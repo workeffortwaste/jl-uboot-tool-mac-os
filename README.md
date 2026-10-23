@@ -1,4 +1,4 @@
-# JieLi UBOOT tool
+# JieLi UBOOT tool (with MacOS support)
 
 A JieLi chip dumper and flasher.
 
